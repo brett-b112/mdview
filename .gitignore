@@ -1,0 +1,6 @@
+test.md
+test2.md
+*.log
+.DS_Store
+node_modules/
+test3.md
