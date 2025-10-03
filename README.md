@@ -54,10 +54,10 @@ npm run build
 ```
 
 ## Example Running
-![Example viewing of files](Example.png)
+![Example viewing of files](ExampleRun.png)
 
 ## Example Useage
-![Example viewing of files](ExampleRun.png)
+![Example viewing of files](Example.png)
 
 ## Supported Markdown Syntax
 
