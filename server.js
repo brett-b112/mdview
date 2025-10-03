@@ -1,7 +1,7 @@
 import express from 'express';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
-import { readFile, readdir } from 'fs/promises';
+import { readFile, readdir, writeFile } from 'fs/promises';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -11,6 +11,7 @@ const port = process.env.PORT || 3000;
 
 // Serve static files from the dist directory
 app.use(express.static(join(__dirname, 'dist')));
+app.use(express.json());
 
 // API endpoint to get markdown files from a directory
 app.get('/api/files', async (req, res) => {
@@ -31,6 +32,17 @@ app.get('/api/files', async (req, res) => {
     }
     
     res.json(markdownFiles);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// API endpoint to save a markdown file
+app.post('/api/files/save', async (req, res) => {
+  const { path, content } = req.body;
+  try {
+    await writeFile(path, content, 'utf-8');
+    res.json({ success: true });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
