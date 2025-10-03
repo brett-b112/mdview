@@ -5,6 +5,46 @@ A simple, browser-based markdown viewer that launches from your terminal. View a
 Jupyter for Markdown 
 
 
+## Dependencies
+
+- Node.js (v14 or higher)
+- npm or yarn
+- React 18+
+- Express
+- TailwindCSS
+- marked (for markdown parsing)
+
+## Architecture
+
+The project follows a client-server architecture:
+
+### Server-side (`server.js`)
+- Express server that handles:
+  - Serving the static React application
+  - File system operations (reading/writing markdown files)
+  - Directory scanning for markdown files
+  - WebSocket connections for real-time updates
+
+### Client-side
+- **Main Entry (`main.jsx`)**
+  - React application entry point
+  - Sets up routing and global state
+  
+- **MarkdownViewer Component**
+  - Main component handling:
+    - File listing
+    - File selection
+    - Edit/Preview toggle
+    - Real-time markdown rendering
+    - File saving
+
+### Data Flow
+1. Server scans directory for .md files
+2. Client requests file list
+3. User selects a file
+4. Content is loaded and rendered
+5. Changes are saved back to filesystem
+
 ## Installation
 
 ```bash
@@ -121,14 +161,5 @@ console.log("Hello, World!");
 *Italic text*
 ***Bold and italic***
 ```
-
-## Dependencies
-
-- React
-- Express
-- TailwindCSS
-- Lucide Icons
-
-## License
 
 MIT License
