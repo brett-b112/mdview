@@ -53,6 +53,12 @@ npm run dev
 npm run build
 ```
 
+## Example Running
+![Example viewing of files](Example.png)
+
+## Example Useage
+![Example viewing of files](ExampleRun.png)
+
 ## Supported Markdown Syntax
 
 ### Headers
